@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~>3.5'
+  gem 'factory_girl_rails'
+  gem 'capybara', "~> 2.5"
 end
 
 group :development do
@@ -49,3 +52,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
+

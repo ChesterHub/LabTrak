@@ -1,7 +1,12 @@
 require 'bcrypt'
 class User < ApplicationRecord
  # users.password_hash in the database is a :string
- 
+ has_many :user_proposals
+ has_many :proposals, through: :user_proposals
+ has_many :votes, dependent: :destroy
+ has_many :comments, dependent: :destroy
+
+
  include BCrypt
 
  def password
@@ -17,7 +22,5 @@ class User < ApplicationRecord
  	self.password == input_password
  end
 
- has_many :user_proposals
- has_many :proposals, through: :user_proposals
- has_many :votes, dependent: :destroy
+
 end
