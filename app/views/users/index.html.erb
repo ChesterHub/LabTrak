@@ -1,7 +1,7 @@
 <h1>Users/index</h1>
 
 <h2>Login: </h2>
-<%= form_for :user, url: '/login' do |f| %>
+<%= form_for :session, url: '/login' do |f| %>
 
   Email: <%= f.text_field :email %>
   Password: <%= f.password_field :password %>
