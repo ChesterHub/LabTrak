@@ -5,7 +5,7 @@ class CreateComments < ActiveRecord::Migration[5.0]
       t.belongs_to :proposal
       t.belongs_to :user
 
-      t.timestamps, null: false
+      t.timestamps null: false
     end
   end
 end

@@ -12,6 +12,6 @@ require 'faker'
 
 10.times do |i|
   proposal = Proposal.create(title: Faker::Book.title, abstract: Faker::Lorem.sentence, intro: Faker::Lorem.sentence(2), hypothesis: Faker::Lorem.sentence(2), method: Faker::Lorem.sentence(2), date_start: Faker::Date.between(2.days.ago, Date.today), date_end: Faker::Date.between(2.days.ago, Date.today), status: "seeking approval")
-  2.times { proposal << User.all.sample }
+  2.times { proposal.users << User.all.sample }
 end
 

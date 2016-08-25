@@ -10,7 +10,7 @@ class CreateProposals < ActiveRecord::Migration[5.0]
       t.date :date_end
       t.string :status
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
