@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 20160825172348) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.text     "body",        null: false
     t.integer  "proposal_id"
     t.integer  "user_id"
+    t.text     "body"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["proposal_id"], name: "index_comments_on_proposal_id", using: :btree
