@@ -24,6 +24,7 @@ body{
   background-image: url(http://wallpaperus.org/wallpapers/07/73/plants-lab-1920x1080-wallpaper-2148832.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center;
 }
 
 h1, h2 {
@@ -58,6 +59,7 @@ h1, h2 {
   border-radius: 30px;
   padding: .5%
 }
+
 
 .form-container {
   display: flex;
@@ -124,3 +126,4 @@ h1, h2 {
   text-decoration: underline;
   color: #2195AF;
 }
+
