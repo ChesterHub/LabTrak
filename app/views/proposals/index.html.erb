@@ -1,0 +1,9 @@
+<div id="proposals_list">
+<h2>Proposals</h2>
+<% @proposals.each do |proposal| %>
+	Title: <%= proposal.title %><br>
+	Abstract: <%= proposal.abstract %><br>
+	Intro: <%= proposal.intro %><br>
+	Status: <%= proposal.status %><br><br>
+<% end %>
+</div>
