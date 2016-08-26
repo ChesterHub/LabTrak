@@ -18,7 +18,7 @@ require 'faker'
                              abstract: Faker::Lorem.sentence,
                              intro: Faker::Lorem.sentence(2),
                              hypothesis: Faker::Lorem.sentence(2),
-                             method: Faker::Lorem.sentence(2),
+                             exp_method: Faker::Lorem.sentence(2),
                              date_start: Faker::Date.between(2.days.ago, Date.today),
                              date_end: Faker::Date.between(2.days.ago, Date.today),
                              status: "seeking approval")
