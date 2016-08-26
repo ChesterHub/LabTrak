@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20160825172348) do
     t.text     "abstract"
     t.text     "intro"
     t.text     "hypothesis"
-    t.text     "method"
+    t.text     "exp_method"
     t.date     "date_start"
     t.date     "date_end"
     t.string   "status"
