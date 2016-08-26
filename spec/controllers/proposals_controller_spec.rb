@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ProposalsController do
+describe ProposalsController, :skip => true do
   describe "GET #index" do
     it "responds with status code 200" do
       get :index
@@ -74,7 +74,7 @@ describe ProposalsController do
     #     post :create, params: { user: attributes }
     #     expect(response).to redirect_to(User.last)
     #   end
-    end
+    # end
 
     # context "when invalid params are passed" do
     #   it "responds with status code 200" do
