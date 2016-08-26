@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   def index
-    @proposals = Proposal.all
+    @proposals = Proposal.by_votes
   end
 
   def show
@@ -37,13 +37,14 @@ class ProposalsController < ApplicationController
 
   def upvote
     @proposal = Proposal.find(params[:id])
+    vote = Vote.new(proposal_id: @proposal.id, user_id: current_user.id)
 
-    vote = Vote.find_by(proposal_id: @proposal.id, user_id: current_user.id)
-    if vote.user_id != current_user.id
-      @proposal.votes.create(user_id: current_user.id)
-      redirect_to(proposal_path)
+    # vote = Vote.find_by(proposal_id: @proposal.id, user_id: current_user.id)
+    if vote.save
+      redirect_to(proposals_path)
     else
-      flash.now[:error] = "You can only vote once!"
+      @errors = "You can only vote once!"
+      render 'show'
     end
   end
 
