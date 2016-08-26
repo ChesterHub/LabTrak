@@ -12,6 +12,8 @@ class ProposalsController < ApplicationController
 
   def edit
     @proposal = Proposal.find(params[:id])
+    p @proposal
+    p "5675" * 20
   end
 
   def create
