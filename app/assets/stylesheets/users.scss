@@ -19,14 +19,28 @@ fieldset, form {
   vertical-align: baseline;
 }
 
+
+body{
+  background-image: url(http://www.pixeden.com/media/k2/galleries/165/003-subtle-light-pattern-background-texture-vol5.jpg);
+  background-repeat: no-repeat;
+  background-size: 200%;
+}
+
 h1, h2 {
   font-weight: bold;
+  align-items: center;
+}
+
+
+.submit {
+  text-align: center;
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Arial Verdana", sans-serif;
 }
 
 .form-row {
@@ -35,6 +49,7 @@ h1, h2 {
 }
 
 .form-row label {
+  font-weight: bold;
   display: inline-block;
   width: 25vw;
 }
