@@ -10072,3 +10072,312 @@ Completed 200 OK in 32ms (Views: 29.9ms | ActiveRecord: 0.0ms)
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 16], ["proposal_id", 10], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
 >>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
+Started GET "/" for ::1 at 2016-08-25 19:33:35 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (22.4ms)
+Completed 200 OK in 328ms (Views: 277.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 19:52:27 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 140ms (Views: 136.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 19:58:02 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 72ms (Views: 68.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:00:29 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 26ms (Views: 24.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:00:31 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 24ms (Views: 22.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:00:41 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 25ms (Views: 22.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:07:23 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 68ms (Views: 66.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:13:27 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 56ms (Views: 53.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:14:00 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 50ms (Views: 48.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:14:09 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 62ms (Views: 60.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:14:21 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 54ms (Views: 52.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:14:37 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 49ms (Views: 46.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:15:05 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 29ms (Views: 26.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:15:35 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 55ms (Views: 52.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:15:41 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 50ms (Views: 48.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:17:50 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 53ms (Views: 51.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:18:22 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 51ms (Views: 49.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:20:20 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 51ms (Views: 49.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:20:27 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 24ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2016-08-25 20:21:49 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hCpNw0oUIaEo9FD3QcQsB/ok8PoyR33MGBf6meA09LzSK+YSSe2FWWlqUdKZ8dBQpajUxqM0XKjOHtarSxmodg==", "session"=>{"email"=>"aa@aa.com", "password"=>"[FILTERED]"}, "commit"=>"Submit"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aa@aa.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/21
+Completed 302 Found in 88ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/users/21" for ::1 at 2016-08-25 20:21:49 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"21"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+DEPRECATION WARNING: You are passing an instance of ActiveRecord::Base to `find`. Please pass the id of the object by calling `.id`. (called from show at /Users/aaronkim/Desktop/lab-track/app/controllers/users_controller.rb:8)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 25ms (Views: 20.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/21/proposals/new" for ::1 at 2016-08-25 20:22:09 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/users/21/proposals/new"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered collection of /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [38 times] (21.1ms)
+  Rendered /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.8ms)
+  Rendering /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (142.7ms)
+Started GET "/proposals/new" for ::1 at 2016-08-25 20:22:20 -0700
+Processing by ProposalsController#new as HTML
+  Rendering proposals/new.html.erb within layouts/application
+  Rendered proposals/new.html.erb within layouts/application (9.5ms)
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 58ms (Views: 34.2ms | ActiveRecord: 9.1ms)
+
+
+Started POST "/proposals" for ::1 at 2016-08-25 20:22:44 -0700
+Processing by ProposalsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AlDJ5smvgAGNq20Ab+TQwrFbVBZNyHZZyYtwaIeAyF5UUWI3ylYk+cw1bCW30SyV7tdwKty7Vz0fglxaLK2UlA==", "proposal"=>{"title"=>".lkzvnx", "abstract"=>"zcklxnv", "intro"=>".zkxncv", "hypothesis"=>"lknzxckv", "method"=>".kjzxcv", "date_start"=>"1028-38-38", "date_end"=>"1923-03-32"}, "commit"=>"Save Proposal"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (7.8ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "method", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", ".lkzvnx"], ["abstract", "zcklxnv"], ["intro", ".zkxncv"], ["hypothesis", "lknzxckv"], ["method", ".kjzxcv"], ["created_at", 2016-08-26 03:22:44 UTC], ["updated_at", 2016-08-26 03:22:44 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/proposals/13
+Completed 302 Found in 17ms (ActiveRecord: 9.2ms)
+
+
+Started GET "/proposals/13" for ::1 at 2016-08-25 20:22:44 -0700
+Processing by ProposalsController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mProposal Load (0.4ms)[0m  [1m[34mSELECT  "proposals".* FROM "proposals" WHERE "proposals"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering proposals/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."proposal_id" = $1[0m  [["proposal_id", 13]]
+  Rendered proposals/show.html.erb within layouts/application (52.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 79ms (Views: 71.6ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/proposals/13/edit" for ::1 at 2016-08-25 20:22:48 -0700
+Processing by ProposalsController#edit as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mProposal Load (0.4ms)[0m  [1m[34mSELECT  "proposals".* FROM "proposals" WHERE "proposals"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering proposals/edit.html.erb within layouts/application
+  Rendered proposals/edit.html.erb within layouts/application (10.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 43ms (Views: 38.9ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/proposals" for ::1 at 2016-08-25 20:23:08 -0700
+Processing by ProposalsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lhfj52lZW6yzNmrk9rlUX+gnBIpZwk8b0SDjuTWfP7WoWymVCo+T8fQs06/L08zv17bomV4AzI2AaY/RieCyCw==", "proposal"=>{"title"=>"kljashdf", "abstract"=>"lkjahsdf", "intro"=>";alskdjf", "hypothesis"=>"Hello", "method"=>"jf;adjsfa;dkdsf;a", "date_start"=>"", "date_end"=>""}, "commit"=>"Save Proposal"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "method", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "kljashdf"], ["abstract", "lkjahsdf"], ["intro", ";alskdjf"], ["hypothesis", "Hello"], ["method", "jf;adjsfa;dkdsf;a"], ["created_at", 2016-08-26 03:23:08 UTC], ["updated_at", 2016-08-26 03:23:08 UTC]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/proposals/14
+Completed 302 Found in 12ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/proposals/14" for ::1 at 2016-08-25 20:23:08 -0700
+Processing by ProposalsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mProposal Load (0.5ms)[0m  [1m[34mSELECT  "proposals".* FROM "proposals" WHERE "proposals"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering proposals/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."proposal_id" = $1[0m  [["proposal_id", 14]]
+  Rendered proposals/show.html.erb within layouts/application (6.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 34ms (Views: 30.4ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/proposals/14/comments" for ::1 at 2016-08-25 20:23:15 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TEtRUcJbRWFKN5ySqguuzn7+/7abhR6Q+5Oq/mJVpwcaSvqAwaLhmQupnbdyPlKZIXLbigr2P/QtmobMyXj7zQ==", "comment"=>{"body"=>";lasdkl;fkjds"}, "commit"=>"Create Comment", "proposal_id"=>"14"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mProposal Load (0.4ms)[0m  [1m[34mSELECT  "proposals".* FROM "proposals" WHERE "proposals"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/proposals/14
+Completed 302 Found in 11ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/proposals/14" for ::1 at 2016-08-25 20:23:15 -0700
+Processing by ProposalsController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mProposal Load (0.3ms)[0m  [1m[34mSELECT  "proposals".* FROM "proposals" WHERE "proposals"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering proposals/show.html.erb within layouts/application
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."proposal_id" = $1[0m  [["proposal_id", 14]]
+  Rendered proposals/show.html.erb within layouts/application (5.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 31ms (Views: 27.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/logout" for ::1 at 2016-08-25 20:23:19 -0700
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:23:19 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 32ms (Views: 29.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for ::1 at 2016-08-25 20:23:25 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 35ms (Views: 31.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-25 20:23:28 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for ::1 at 2016-08-25 20:23:30 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 37ms (Views: 35.2ms | ActiveRecord: 0.0ms)
+
+
