@@ -21,9 +21,9 @@ fieldset, form {
 
 
 body{
-  background-image: url(http://www.pixeden.com/media/k2/galleries/165/003-subtle-light-pattern-background-texture-vol5.jpg);
+  background-image: url(http://wallpaperus.org/wallpapers/07/73/plants-lab-1920x1080-wallpaper-2148832.jpg);
   background-repeat: no-repeat;
-  background-size: 200%;
+  background-attachment: fixed;
 }
 
 h1, h2 {
@@ -36,22 +36,37 @@ h1, h2 {
   text-align: center;
 }
 
+.index-container {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background-color: #E0E0E0;
+  width: 40%;
+  opacity: .9;
+  margin: auto;
+}
+
 .form-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   font-family: "Arial Verdana", sans-serif;
 }
 
 .form-row {
   display: block;
   margin-bottom: 1vh;
+  font-weight: bold;
 }
 
 .form-row label {
-  font-weight: bold;
   display: inline-block;
-  width: 25vw;
+  width: 15vw;
 }
 
 .text-field {
