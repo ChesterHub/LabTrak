@@ -1,21 +1,38 @@
-<h1>Users/index</h1>
+<div class="index-container">
+  <h1>Welcome to LabTrack</h1>
 
-<h2>Login: </h2>
-<%= form_for :session, url: '/login' do |f| %>
+  <div class="form-container">
+    <h2>Login</h2>
+    <%= form_for :session, url: '/login' do |f| %>
+      <div class="form-row">
+        <label for="email"> Email: </label> <p class="text-field"> <%= f.text_field :email %> </p>
+      </div>
+      <div class="form-row">
+        <label for="password"> Password: </label> <p class="text-field"> <%= f.password_field :password %> </p>
+      </div>
+      <%= f.submit "Submit" %>
 
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  <%= f.submit "Submit" %>
+    <% end %>
+  </div>
 
-<% end %>
+  <div class="form-container">
+    <h2>Registration </h2>
+    <%= form_for :user, url: '/users' do |f| %>
 
-<h2>Registration: </h2>
-<%= form_for :user, url: '/users' do |f| %>
+      <div class="form-row">
+        <label for="name"> Name: </label> <p class="text-field"> <%= f.text_field :name %> </p>
+      </div>
+      <div class="form-row">
+        <label for="email"> Email: </label> <p class="text-field"> <%= f.text_field :email %> </p>
+      </div>
+      <div class="form-row">
+        <label for="password"> Password: </label> <p class="text-field"> <%= f.password_field :password %> </p>
+      </div>
+      <div class="form-row">
+        <label for="password_confirmation"> Password Confirmation: </label> <p class="text-field"> <%= f.password_field :password_confirmation %> </p>
+      </div>
+      <%= f.submit "Submit" %>
 
-  Name: <%= f.text_field :name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
-
-<% end %>
+    <% end %>
+  </div>
+</div>
