@@ -591,6 +591,7 @@ ORDER BY c.conname
   [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "method", "date_start", "date_end", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "The Way Through the Woods"], ["abstract", "Dignissimos dolor ipsum unde eligendi maiores nihil ut culpa."], ["intro", "Ab quo."], ["hypothesis", "Hic accusamus."], ["method", "Molestiae et voluptatem sequi."], ["date_start", Wed, 24 Aug 2016], ["date_end", Tue, 23 Aug 2016], ["status", "seeking approval"], ["created_at", 2016-08-25 18:51:59 UTC], ["updated_at", 2016-08-25 18:51:59 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
 <<<<<<< HEAD
+<<<<<<< HEAD
 Started GET "/" for ::1 at 2016-08-25 12:10:41 -0700
   
 ActiveRecord::PendingMigrationError (
@@ -695,6 +696,8 @@ Migrating to CreateComments (20160825172348)
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (2.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
 =======
+=======
+>>>>>>> 624c97ba7b2b466a01465e16c6f9cb72728c9794
   [1m[35m (32.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
   [1m[35m (19.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (6.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775);[0m
@@ -744,7 +747,10 @@ Migrating to CreateComments (20160825172348)
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (4.3ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+<<<<<<< HEAD
 >>>>>>> 768c3ebd8b61f1683a20a754067ef7e458eae531
+=======
+>>>>>>> 624c97ba7b2b466a01465e16c6f9cb72728c9794
 FROM pg_constraint c
 JOIN pg_class t1 ON c.conrelid = t1.oid
 JOIN pg_class t2 ON c.confrelid = t2.oid
@@ -757,10 +763,14 @@ WHERE c.contype = 'f'
 ORDER BY c.conname
 [0m
 <<<<<<< HEAD
+<<<<<<< HEAD
   [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
 =======
   [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
 >>>>>>> 768c3ebd8b61f1683a20a754067ef7e458eae531
+=======
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+>>>>>>> 624c97ba7b2b466a01465e16c6f9cb72728c9794
 FROM pg_constraint c
 JOIN pg_class t1 ON c.conrelid = t1.oid
 JOIN pg_class t2 ON c.confrelid = t2.oid
@@ -773,10 +783,14 @@ WHERE c.contype = 'f'
 ORDER BY c.conname
 [0m
 <<<<<<< HEAD
+<<<<<<< HEAD
   [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
 =======
   [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
 >>>>>>> 768c3ebd8b61f1683a20a754067ef7e458eae531
+=======
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+>>>>>>> 624c97ba7b2b466a01465e16c6f9cb72728c9794
 FROM pg_constraint c
 JOIN pg_class t1 ON c.conrelid = t1.oid
 JOIN pg_class t2 ON c.confrelid = t2.oid
@@ -789,10 +803,14 @@ WHERE c.contype = 'f'
 ORDER BY c.conname
 [0m
 <<<<<<< HEAD
+<<<<<<< HEAD
   [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
 =======
   [1m[35m (1.8ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
 >>>>>>> 768c3ebd8b61f1683a20a754067ef7e458eae531
+=======
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+>>>>>>> 624c97ba7b2b466a01465e16c6f9cb72728c9794
 FROM pg_constraint c
 JOIN pg_class t1 ON c.conrelid = t1.oid
 JOIN pg_class t2 ON c.confrelid = t2.oid
@@ -805,10 +823,14 @@ WHERE c.contype = 'f'
 ORDER BY c.conname
 [0m
 <<<<<<< HEAD
+<<<<<<< HEAD
   [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
 =======
   [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
 >>>>>>> 768c3ebd8b61f1683a20a754067ef7e458eae531
+=======
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+>>>>>>> 624c97ba7b2b466a01465e16c6f9cb72728c9794
 FROM pg_constraint c
 JOIN pg_class t1 ON c.conrelid = t1.oid
 JOIN pg_class t2 ON c.confrelid = t2.oid
@@ -832,6 +854,7 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+<<<<<<< HEAD
 <<<<<<< HEAD
 Started GET "/" for ::1 at 2016-08-25 12:11:55 -0700
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
@@ -1429,6 +1452,8 @@ app/controllers/proposals_controller.rb:3:in `show'
   Rendered /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
   Rendered /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (68.7ms)
 =======
+=======
+>>>>>>> 624c97ba7b2b466a01465e16c6f9cb72728c9794
   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (12.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Eryn Marvin"], ["email", "amelie.fisher@boehm.net"], ["password_hash", "yes"], ["role", "zombies"], ["created_at", 2016-08-25 19:03:16 UTC], ["updated_at", 2016-08-25 19:03:16 UTC]]
@@ -4949,6 +4974,7 @@ ORDER BY c.conname
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = $1 ORDER BY "votes"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
   [1m[36mProposal Load (0.4ms)[0m  [1m[34mSELECT  "proposals".* FROM "proposals" WHERE "proposals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+<<<<<<< HEAD
 >>>>>>> 768c3ebd8b61f1683a20a754067ef7e458eae531
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775);[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
@@ -7715,3 +7741,5 @@ puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
   Rendering /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
   Rendered /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
   Rendered /Users/aaronkim/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (78.8ms)
+=======
+>>>>>>> 624c97ba7b2b466a01465e16c6f9cb72728c9794
