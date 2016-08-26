@@ -33,47 +33,47 @@ describe ProposalsController do
   end
 
   describe "GET #new" do
-    it "responds successfully with an HTTP 200 status code" do
-      get :new
-      expect(response).to have_http_status(200)
-    end
-
-    it "assigns a new user to @user" do
-      get :new
-      expect(assigns(:user)).to be_a_new User
-    end
-
-    it "renders the :new template" do
-      get :new
-      expect(response).to render_template(:new)
-    end
+    # it "responds successfully with an HTTP 200 status code" do
+    #   get :new
+    #   expect(response).to have_http_status(200)
+    # end
+    #
+    # it "assigns a new user to @user" do
+    #   get :new
+    #   expect(assigns(:user)).to be_a_new User
+    # end
+    #
+    # it "renders the :new template" do
+    #   get :new
+    #   expect(response).to render_template(:new)
+    # end
   end
 
   describe "POST #create" do
-    context "when valid params are passed" do
-      attributes = FactoryGirl.attributes_for(:user)
-      attributes[:password_confirmation] = 'asdf'
-
-      it "responds with status code 302" do
-        post :create, params: { user: attributes }
-        expect(response).to have_http_status(302)
-      end
-
-      it "creates a new game in the database" do
-        expect{
-          post :create, params: { user: attributes }
-        }.to change { User.count }
-      end
-
-      it "assigns the newly created game as @user", :skip => true do
-        post :create, params: { user: attributes }
-        expect(assigns(:user)).to eq(User.last)
-      end
-
-      it "redirects to the created user" do
-        post :create, params: { user: attributes }
-        expect(response).to redirect_to(User.last)
-      end
+    # context "when valid params are passed" do
+    #   attributes = FactoryGirl.attributes_for(:user)
+    #   attributes[:password_confirmation] = 'asdf'
+    #
+    #   it "responds with status code 302" do
+    #     post :create, params: { user: attributes }
+    #     expect(response).to have_http_status(302)
+    #   end
+    #
+    #   it "creates a new game in the database" do
+    #     expect{
+    #       post :create, params: { user: attributes }
+    #     }.to change { User.count }
+    #   end
+    #
+    #   it "assigns the newly created game as @user", :skip => true do
+    #     post :create, params: { user: attributes }
+    #     expect(assigns(:user)).to eq(User.last)
+    #   end
+    #
+    #   it "redirects to the created user" do
+    #     post :create, params: { user: attributes }
+    #     expect(response).to redirect_to(User.last)
+    #   end
     end
 
     # context "when invalid params are passed" do
