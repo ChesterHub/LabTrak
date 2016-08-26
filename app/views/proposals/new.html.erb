@@ -1,0 +1,42 @@
+<h1>Hello World</h1>
+
+<%= form_for :proposal, url: proposals_path do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :abstract %><br>
+    <%= f.text_area :abstract %>
+  </p>
+
+  <p>
+    <%= f.label :intro %><br>
+    <%= f.text_area :intro %>
+  </p>
+
+  <p>
+    <%= f.label :hypothesis %><br>
+    <%= f.text_area :hypothesis %>
+  </p>
+
+  <p>
+    <%= f.label :method %><br>
+    <%= f.text_area :method %>
+  </p>
+
+  <p>
+    <%= f.label :date_start %><br>
+    <%= f.text_field :date_start %>
+  </p>
+
+  <p>
+    <%= f.label :date_end %><br>
+    <%= f.text_field :date_end %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
