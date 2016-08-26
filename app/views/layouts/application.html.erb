@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	 <%= link_to "LabTrak", '/proposals' %> | 
+	 <%= link_to "LabTrak", '/proposals' %> |
 	<% if current_user %>
 	Signed in as <a href="/users/<%=current_user.id %>"><%= current_user.name.capitalize %></a> | <%= link_to "Logout", '/logout' %>
 	<% else %>

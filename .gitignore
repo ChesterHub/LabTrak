@@ -1,6 +1,5 @@
 *.rbc
 capybara-*.html
-coverage
 .rspec
 /log
 /tmp

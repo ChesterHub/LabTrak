@@ -1,31 +1,54 @@
-<h1>Proposal</h1>
+<div class="index-container">
 
-<%= @proposal.title %><br><br>
-<%= @proposal.abstract %><br><br>
-<%= @proposal.intro%><br><br>
-<%= @proposal.hypothesis %><br><br>
-<%= @proposal.exp_method %><br><br>
-<%= @proposal.date_start %><br><br>
-<%= @proposal.date_end %>
+  <div class="form-container">
+    <h1>Proposal</h1><br>
+    <div class="form-row">
+      Title:
+    </div>
+    <label for="title"><%= @proposal.title %> </label><br>
+    <div class="form-row">
+      Abstract:
+    </div>
+    <label for="abstract"> <%= @proposal.abstract %> </label><br>
+    <div class="form-row">
+      Introduction:
+    </div>
+    <label for="intro"> <%= @proposal.intro%> </label><br>
+    <div class="form-row">
+      Hypothsis:
+    </div>
+    <label for="hypothesis"> <%= @proposal.hypothesis %> </label><br>
+    <div class="form-row">
+      Method:
+    </div>
+    <label for="exp_method"> <%= @proposal.exp_method %> </label><br>
+    <div class="form-row">
+      Date start:
+    </div>
+    <label for="date_start"> <%= @proposal.date_start %>: </label><br>
+    <div class="form-row">
+      Date end:
+    </div>
+    <label for="date_end"> <%= @proposal.date_end %> </label><br>
 
-<%= link_to 'Edit form', edit_proposal_path(@proposal) %>
+    <%= link_to 'Edit form', edit_proposal_path(@proposal) %>
 
 
-<h2>Add a comment:</h2>
-<%= form_for([@proposal, @proposal.comments.build]) do |f| %>
-  <p>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-<br>
+    <h2>Add a comment:</h2>
+    <%= form_for([@proposal, @proposal.comments.build]) do |f| %>
+    <p>
+      <%= f.text_area :body %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+    <% end %>
+    <br>
 
+		<% @proposal.comments.each do |comment| %>
+		  <%= comment.body %>
+		<% end %>
 
-<% @proposal.comments.each do |comment| %>
-  <%= comment.body %>
-<% end %>
-
-<%= button_to 'Vote', upvote_proposal_path(@proposal), method: :post %>
+		<%= button_to 'Vote', upvote_proposal_path(@proposal), method: :post %>
+  </div>
+</div>
