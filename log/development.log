@@ -10381,3 +10381,206 @@ Processing by UsersController#new as HTML
 Completed 200 OK in 37ms (Views: 35.2ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2016-08-26 10:46:30 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (6.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 622ms (Views: 607.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for ::1 at 2016-08-26 10:49:07 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 355ms (Views: 307.7ms | ActiveRecord: 17.0ms)
+
+
+Started POST "/users" for ::1 at 2016-08-26 10:49:19 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t9cvYBeV612liIuxvLkYlttoqHQTjTY9dxs87zJ1zgC0sjCxpO2uZiU/Ns855vR7Lp2RMzG09Bh1cl8RzCH8gA==", "user"=>{"name"=>"Jason", "email"=>"jason@jason.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Submit"}
+Unpermitted parameter: password_confirmation
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Jason"], ["email", "jason@jason.com"], ["password_hash", "$2a$10$aoy5WHFVku5kaF8GZ1YlMeuL3IokIdF8jDGMv.E2HPgVRAjqZij1K"], ["created_at", 2016-08-26 17:49:19 UTC], ["updated_at", 2016-08-26 17:49:19 UTC]]
+  [1m[35m (12.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/21
+Completed 302 Found in 106ms (ActiveRecord: 19.4ms)
+
+
+Started GET "/users/21" for ::1 at 2016-08-26 10:49:19 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"21"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+DEPRECATION WARNING: You are passing an instance of ActiveRecord::Base to `find`. Please pass the id of the object by calling `.id`. (called from show at /Users/jsl728/Dropbox/dbc/on-site/challenges/phase-3/lab-track/app/controllers/users_controller.rb:8)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 33ms (Views: 24.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/proposals" for ::1 at 2016-08-26 10:49:31 -0700
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for ProposalsController):
+  
+actionpack (5.0.0.1) lib/abstract_controller/base.rb:121:in `process'
+actionview (5.0.0.1) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.0.1) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout
+  Rendered /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.5ms)
+Started GET "/proposals/new" for ::1 at 2016-08-26 10:49:37 -0700
+Processing by ProposalsController#new as HTML
+  Rendering proposals/new.html.erb within layouts/application
+  Rendered proposals/new.html.erb within layouts/application (31.9ms)
+Completed 500 Internal Server Error in 59ms (ActiveRecord: 2.7ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 0, expected 1)):
+    24: 
+    25:     <p>
+    26:       <%= f.label :method %><br>
+    27:       <%= f.text_area :method %>
+    28:     </p>
+    29: 
+    30:     <p>
+  
+app/views/proposals/new.html.erb:27:in `block in _app_views_proposals_new_html_erb___2634048986680528800_70160590805920'
+app/views/proposals/new.html.erb:4:in `_app_views_proposals_new_html_erb___2634048986680528800_70160590805920'
+  Rendering /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.6ms)
+  Rendering /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (92.8ms)
+Started GET "/proposals/new" for ::1 at 2016-08-26 10:51:15 -0700
+Processing by ProposalsController#new as HTML
+  Rendering proposals/new.html.erb within layouts/application
+  Rendered proposals/new.html.erb within layouts/application (3.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 57ms (Views: 53.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/proposals" for ::1 at 2016-08-26 10:51:50 -0700
+Processing by ProposalsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yRcNU7iHflRoXv0J+ilPwivXsWWoQzjyIuqFQB+KOuDKchKCC/87b+jpQHd/dqMv3iKIIop6+tcgg+a+4d4IYA==", "proposal"=>{"title"=>"best exp ever", "abstract"=>"aslkfjfds fdskjlfds asfljkfds fsdljkfasd asfdlkjfas afslkjfsad afsdlk sdflafsdlkj", "intro"=>" alksdfjkl asdf lsdfjl afsdlkjDSLKasdlk flksdf asdfjlk df", "hypothesis"=>"jlasd sdfalkjsfd lkjsdf  lakdsfjasldk fjklsad fasdljk ", "exp_method"=>"askljdf sdkjf asdlkf asdfkljasdf jfsklj as dlfsl ", "date_start"=>"01/02/2017", "date_end"=>"02/04/2017"}, "commit"=>"Save Proposal"}
+Unpermitted parameter: exp_method
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.9ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "date_start", "date_end", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "best exp ever"], ["abstract", "aslkfjfds fdskjlfds asfljkfds fsdljkfasd asfdlkjfas afslkjfsad afsdlk sdflafsdlkj"], ["intro", " alksdfjkl asdf lsdfjl afsdlkjDSLKasdlk flksdf asdfjlk df"], ["hypothesis", "jlasd sdfalkjsfd lkjsdf  lakdsfjasldk fjklsad fasdljk "], ["date_start", Wed, 01 Feb 2017], ["date_end", Sun, 02 Apr 2017], ["created_at", 2016-08-26 17:51:50 UTC], ["updated_at", 2016-08-26 17:51:50 UTC]]
+  [1m[35m (12.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/proposals/11
+Completed 302 Found in 25ms (ActiveRecord: 19.4ms)
+
+
+Started GET "/proposals/11" for ::1 at 2016-08-26 10:51:50 -0700
+Processing by ProposalsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mProposal Load (0.4ms)[0m  [1m[34mSELECT  "proposals".* FROM "proposals" WHERE "proposals"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering proposals/show.html.erb within layouts/application
+  Rendered proposals/show.html.erb within layouts/application (3.7ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 0, expected 1)):
+    4: <%= @proposal.abstract %><br><br>
+    5: <%= @proposal.intro%><br><br>
+    6: <%= @proposal.hypothesis %><br><br>
+    7: <%= @proposal.method %><br><br>
+    8: <%= @proposal.date_start %><br><br>
+    9: <%= @proposal.date_end %>
+   10: 
+  
+app/views/proposals/show.html.erb:7:in `method'
+app/views/proposals/show.html.erb:7:in `_app_views_proposals_show_html_erb__1894999213284002750_70160596705580'
+  Rendering /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.5ms)
+  Rendering /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/jsl728/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (89.8ms)
+Started GET "/proposals/11" for ::1 at 2016-08-26 10:52:08 -0700
+Processing by ProposalsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mProposal Load (1.1ms)[0m  [1m[34mSELECT  "proposals".* FROM "proposals" WHERE "proposals"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering proposals/show.html.erb within layouts/application
+  [1m[36mComment Load (7.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."proposal_id" = $1[0m  [["proposal_id", 11]]
+  Rendered proposals/show.html.erb within layouts/application (51.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 94ms (Views: 76.4ms | ActiveRecord: 14.4ms)
+
+
+Started POST "/proposals/11/comments" for ::1 at 2016-08-26 10:52:22 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TxSfYotefciTJoIi1fo8a7pZBrMXLIaEjTNyD/9OgxhMcYCzOCY48xORP1xQpdCGT6w/9DUVRKGPWhHxARqxmA==", "comment"=>{"body"=>"This is my comment - jason"}, "commit"=>"Create Comment", "proposal_id"=>"11"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mProposal Load (0.2ms)[0m  [1m[34mSELECT  "proposals".* FROM "proposals" WHERE "proposals"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/proposals/11
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/proposals/11" for ::1 at 2016-08-26 10:52:22 -0700
+Processing by ProposalsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mProposal Load (0.3ms)[0m  [1m[34mSELECT  "proposals".* FROM "proposals" WHERE "proposals"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering proposals/show.html.erb within layouts/application
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."proposal_id" = $1[0m  [["proposal_id", 11]]
+  Rendered proposals/show.html.erb within layouts/application (6.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+Completed 200 OK in 39ms (Views: 34.9ms | ActiveRecord: 1.3ms)
+
+

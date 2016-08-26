@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Routing to users", :type => :routing do
+RSpec.describe "Routing to sessions", :type => :routing do
 
   context "The user IS NOT logged in" do
     it "GET /login routes to sessions#new" do
