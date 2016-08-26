@@ -21,6 +21,4 @@ class User < ApplicationRecord
  def authenticate(input_password)
  	self.password == input_password
  end
-
-
 end

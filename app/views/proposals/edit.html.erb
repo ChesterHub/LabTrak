@@ -1,0 +1,42 @@
+<h1>Hello World</h1>
+
+<%= form_for :proposal, url: proposals_path do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, :value => params[:title] %>
+  </p>
+
+  <p>
+    <%= f.label :abstract %><br>
+    <%= f.text_area :abstract, :value => params[:abstract] %>
+  </p>
+
+  <p>
+    <%= f.label :intro %><br>
+    <%= f.text_area :intro, :value => params[:intro] %>
+  </p>
+
+  <p>
+    <%= f.label :hypothesis %><br>
+    <%= f.text_area :hypothesis, :value => params[:hypothesis] %>
+  </p>
+
+  <p>
+    <%= f.label :method %><br>
+    <%= f.text_area :method, :value => params[:method] %>
+  </p>
+
+  <p>
+    <%= f.label :date_start %><br>
+    <%= f.date_field :date_start, :value => params[:date_start] %>
+  </p>
+
+  <p>
+    <%= f.label :date_end %><br>
+    <%= f.date_field :date_end, :value => params[:date_end] %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
