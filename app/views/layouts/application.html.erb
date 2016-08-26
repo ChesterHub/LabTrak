@@ -11,7 +11,7 @@
 <body>
 	 <%= link_to "LabTrak", '/proposals' %> | 
 	<% if current_user %>
-	Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+	Signed in as <a href="/users/<%=current_user.id %>"><%= current_user.name.capitalize %></a> | <%= link_to "Logout", '/logout' %>
 	<% else %>
 	<%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
 	<% end %>
