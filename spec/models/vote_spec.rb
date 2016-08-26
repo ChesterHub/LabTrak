@@ -18,5 +18,5 @@ describe Vote do
       expect(Vote.last).to_not be vote
     end
   end
-  
+
 end

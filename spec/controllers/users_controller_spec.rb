@@ -18,8 +18,8 @@ RSpec.describe UsersController, :type => :controller do
     # end
   end
 
-  describe "GET #show", :skip => true do
-    user = FactoryGirl.create(:user)
+  describe "GET #show" do
+    p user = FactoryGirl.create(:user)
 
     it "responds with status code 200" do
       get :show, params: { id: user.id }
