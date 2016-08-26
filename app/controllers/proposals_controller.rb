@@ -1,6 +1,6 @@
 class ProposalsController < ApplicationController
   def index
-    @proposals = Proposal.all
+    @proposals = Proposal.by_votes
   end
 
   def show
