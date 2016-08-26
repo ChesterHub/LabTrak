@@ -29,6 +29,9 @@ body{
 h1, h2 {
   font-weight: bold;
   align-items: center;
+  font-size: 130%;
+  text-shadow: 
+  -.3px -.3px .3px #111;
 }
 
 
@@ -49,27 +52,75 @@ h1, h2 {
   width: 40%;
   opacity: .9;
   margin: auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border:1.5px solid #6B7C6E;
+  border-radius: 30px;
+  padding: .5%
 }
 
 .form-container {
   display: flex;
   align-items: center;
   flex-direction: column;
-  font-family: "Arial Verdana", sans-serif;
+  font-family: "Verdana", sans-serif;
 }
 
 .form-row {
   display: block;
   margin-bottom: 1vh;
   font-weight: bold;
+  margin-bottom: -1px;
 }
 
 .form-row label {
   display: inline-block;
   width: 15vw;
+  padding-top: 5px;
 }
 
 .text-field {
   display: inline-block;
   width: 15vw;
+}
+
+#title a {
+  color: #085B72;
+  font-style: "Verdana";
+  font-size: 110%;
+  text-decoration: none;
+   text-shadow: 
+ -.3px -.3px .3px #111; 
+}
+
+#title a:hover {
+  color: #2195AF;
+  text-decoration: underline;
+}
+
+#intro {
+  margin-bottom: 25px;
+}
+
+
+.header {
+ border:2px solid #6B7C6E;
+ background-color: #519174;
+ opacity: .9;
+ font-family: "Tahoma";
+ font-size: 120%;
+ text-align: center;
+ padding: 1%;
+ text-shadow: 
+ -.5px -.5px .5px #111; 
+}
+
+.header a {
+  text-decoration: none;
+  color: #91FFCB;
+}
+
+.header a:hover {
+  text-decoration: underline;
+  color: #2195AF;
 }
