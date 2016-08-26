@@ -37,11 +37,13 @@ class ProposalsController < ApplicationController
 
   def upvote
     @proposal = Proposal.find(params[:id])
-    if 
+
+    vote = Vote.find_by(proposal_id: @proposal.id, user_id: current_user.id)
+    if vote.user_id != current_user.id
       @proposal.votes.create(user_id: current_user.id)
       redirect_to(proposal_path)
     else
-      flash[:notice] = "You can only vote once!"
+      flash.now[:error] = "You can only vote once!"
     end
   end
 
