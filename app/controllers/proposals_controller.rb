@@ -2,6 +2,7 @@ class ProposalsController < ApplicationController
   def index
     @proposals = Proposal.all
   end
+
   def show
     @proposal = Proposal.find(params[:id])
   end
@@ -12,8 +13,6 @@ class ProposalsController < ApplicationController
 
   def edit
     @proposal = Proposal.find(params[:id])
-    p @proposal
-    p "5675" * 20
   end
 
   def create
@@ -27,7 +26,6 @@ class ProposalsController < ApplicationController
   end
 
   def update
-    p "*" * 200
     @proposal = Proposal.find(params[:id])
 
     if @proposal.update(proposal_params)

@@ -59,7 +59,7 @@ RSpec.describe UsersController, :type => :controller do
         expect(response).to have_http_status(302)
       end
 
-      it "creates a new game in the database" do
+      it "creates a new user in the database" do
         expect{
           post :create, params: { user: attributes }
         }.to change { User.count }
