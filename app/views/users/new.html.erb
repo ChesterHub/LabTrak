@@ -2,7 +2,7 @@
 
 
   <div class="form-container">
-    <h1>Users/new</h1>
+    <h1>Create account</h1>
     <%= form_for :user, url: '/users' do |f| %>
 
     <div class="form-row">
@@ -19,7 +19,9 @@
       <label for="password"> Password Confirmation: </label> <%= f.password_field :password_confirmation %>
     </div>
 
+    <div class="submit">
       <%= f.submit "Register" %>
+    </div>
 
     <% end %>
   </div>
