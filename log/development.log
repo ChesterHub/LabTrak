@@ -4975,6 +4975,7 @@ ORDER BY c.conname
   [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT  "votes".* FROM "votes" WHERE "votes"."user_id" = $1 ORDER BY "votes"."id" ASC LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
   [1m[36mProposal Load (0.4ms)[0m  [1m[34mSELECT  "proposals".* FROM "proposals" WHERE "proposals"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 768c3ebd8b61f1683a20a754067ef7e458eae531
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775);[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
@@ -4984,6 +4985,65 @@ ORDER BY c.conname
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (2.3ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+=======
+  [1m[36mActiveRecord::SchemaMigration Load (7.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (133.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_development"[0m
+  [1m[35m (129.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "test_app_test"[0m
+  [1m[35m (24.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (21.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7992348028875656775);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20160825171721)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (27.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "email" character varying, "password_hash" character varying, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160825171721"]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProposals (20160825172233)
+  [1m[35m (6.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE "proposals" ("id" serial primary key, "title" character varying, "abstract" text, "intro" text, "hypothesis" text, "exp_method" text, "date_start" date, "date_end" date, "status" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160825172233"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserProposals (20160825172235)
+  [1m[35m (6.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "user_proposals" ("user_id" integer, "proposal_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_user_proposals_on_user_id" ON "user_proposals"  ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_user_proposals_on_proposal_id" ON "user_proposals"  ("proposal_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160825172235"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEquipment (20160825172305)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "equipment" ("id" serial primary key, "name" character varying NOT NULL, "quantity" integer, "proposal_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE  INDEX  "index_equipment_on_proposal_id" ON "equipment"  ("proposal_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160825172305"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateVotes (20160825172326)
+  [1m[35m (6.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_user_proposals_on_user_id_and_proposal_id" ON "user_proposals"  ("user_id", "proposal_id")[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "votes" ("id" serial primary key, "user_id" integer, "proposal_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_votes_on_user_id" ON "votes"  ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_votes_on_proposal_id" ON "votes"  ("proposal_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160825172326"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20160825172348)
+  [1m[35m (5.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.6ms)[0m  [1m[35mCREATE TABLE "comments" ("id" serial primary key, "proposal_id" integer, "user_id" integer, "body" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_proposal_id" ON "comments"  ("proposal_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160825172348"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-08-26 00:28:31 UTC], ["updated_at", 2016-08-26 00:28:31 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7992348028875656775)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
 FROM pg_constraint c
 JOIN pg_class t1 ON c.conrelid = t1.oid
 JOIN pg_class t2 ON c.confrelid = t2.oid
@@ -5019,7 +5079,11 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+<<<<<<< HEAD
   [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+=======
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
 FROM pg_constraint c
 JOIN pg_class t1 ON c.conrelid = t1.oid
 JOIN pg_class t2 ON c.confrelid = t2.oid
@@ -5031,7 +5095,11 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+<<<<<<< HEAD
   [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+=======
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
 FROM pg_constraint c
 JOIN pg_class t1 ON c.conrelid = t1.oid
 JOIN pg_class t2 ON c.confrelid = t2.oid
@@ -5043,7 +5111,11 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+<<<<<<< HEAD
   [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+=======
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
 FROM pg_constraint c
 JOIN pg_class t1 ON c.conrelid = t1.oid
 JOIN pg_class t2 ON c.confrelid = t2.oid
@@ -5055,6 +5127,7 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+<<<<<<< HEAD
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Evans Stokes"], ["email", "junior_ebert@oconnell.info"], ["password_hash", "yes"], ["role", "spirits"], ["created_at", 2016-08-25 23:13:25 UTC], ["updated_at", 2016-08-25 23:13:25 UTC]]
@@ -5134,11 +5207,85 @@ ORDER BY c.conname
   [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Unde rerum omnis suscipit et."], ["proposal_id", 2], ["user_id", 15], ["created_at", 2016-08-25 23:13:25 UTC], ["updated_at", 2016-08-25 23:13:25 UTC]]
+=======
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Alia Shanahan"], ["email", "newton@koelpin.info"], ["password_hash", "yes"], ["role", "people"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (18.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Miss Matilda Tremblay"], ["email", "frederik@hermannhermiston.org"], ["password_hash", "yes"], ["role", "sheep"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Ms. Violet Barrows"], ["email", "javier_witting@harber.name"], ["password_hash", "yes"], ["role", "foes"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Ozzie Parker PhD"], ["email", "dax@schowalterhayes.biz"], ["password_hash", "yes"], ["role", "bats"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Russell Aufderhar MD"], ["email", "marion.ferry@cartermedhurst.info"], ["password_hash", "yes"], ["role", "exorcists"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Leann Hyatt"], ["email", "diego@konopelski.name"], ["password_hash", "yes"], ["role", "ants"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Celia Will Jr."], ["email", "beth@krajcik.co"], ["password_hash", "yes"], ["role", "zebras"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mortimer Kub"], ["email", "shanna@reichelharber.io"], ["password_hash", "yes"], ["role", "sheep"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Miss Zoila Cummings"], ["email", "abbey@vonruedenschulist.co"], ["password_hash", "yes"], ["role", "witches"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Adaline Quigley"], ["email", "dorothea.doyle@kiehn.co"], ["password_hash", "yes"], ["role", "griffins"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Sheldon Bartoletti"], ["email", "dovie_damore@fadel.com"], ["password_hash", "yes"], ["role", "foes"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Orie Cormier"], ["email", "jerald@murazik.biz"], ["password_hash", "yes"], ["role", "werewolves"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Vivianne Dibbert"], ["email", "jaclyn_okuneva@bartoletti.biz"], ["password_hash", "yes"], ["role", "ghosts"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Quincy Lowe"], ["email", "davion.macejkovic@wolff.info"], ["password_hash", "yes"], ["role", "bees"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Caitlyn Gottlieb"], ["email", "gus@schuppehills.info"], ["password_hash", "yes"], ["role", "ogres"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Mrs. Sage Sipes"], ["email", "olin@predovic.name"], ["password_hash", "yes"], ["role", "sorcerors"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Cecil Shields V"], ["email", "landen.white@stehr.io"], ["password_hash", "yes"], ["role", "goblins"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Buddy Volkman I"], ["email", "liana@ratke.info"], ["password_hash", "yes"], ["role", "bears"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lourdes Torp"], ["email", "monte@terryhackett.biz"], ["password_hash", "yes"], ["role", "giants"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_hash", "role", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Alyce Stracke"], ["email", "casper@quigley.co"], ["password_hash", "yes"], ["role", "chickens"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "exp_method", "date_start", "date_end", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Dance Dance Dance"], ["abstract", "Maiores accusantium nihil ratione officiis."], ["intro", "Minima aliquam."], ["hypothesis", "Consequatur dolorem et rem iure velit."], ["exp_method", "Est beatae error sint veniam earum dicta."], ["date_start", Thu, 25 Aug 2016], ["date_end", Thu, 25 Aug 2016], ["status", "seeking approval"], ["created_at", 2016-08-26 00:28:47 UTC], ["updated_at", 2016-08-26 00:28:47 UTC]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (17.8ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 18], ["proposal_id", 1], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 19], ["proposal_id", 1], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Molestiae totam animi praesentium est."], ["proposal_id", 2], ["user_id", 18], ["created_at", 2016-08-25 23:13:25 UTC], ["updated_at", 2016-08-25 23:13:25 UTC]]
@@ -5159,12 +5306,35 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Nostrum veniam est."], ["proposal_id", 2], ["user_id", 8], ["created_at", 2016-08-25 23:13:25 UTC], ["updated_at", 2016-08-25 23:13:25 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (8.9ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 1], ["user_id", 12], ["body", "Quibusdam totam."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 1], ["user_id", 7], ["body", "Maxime rem voluptas tenetur repudiandae sequi velit."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 1], ["user_id", 7], ["body", "Ullam et libero."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Mollitia aspernatur vel molestiae ullam."], ["proposal_id", 2], ["user_id", 6], ["created_at", 2016-08-25 23:13:25 UTC], ["updated_at", 2016-08-25 23:13:25 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
@@ -5201,6 +5371,44 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Dolorem est quo in ut non sit."], ["proposal_id", 3], ["user_id", 20], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 1], ["user_id", 14], ["body", "Blanditiis sint et voluptate ullam."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 1], ["user_id", 15], ["body", "Vero est consequuntur."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (9.1ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 17], ["proposal_id", 1], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "exp_method", "date_start", "date_end", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Number the Stars"], ["abstract", "Delectus vero molestiae quod ut."], ["intro", "Aliquam veritatis."], ["hypothesis", "Repudiandae vitae."], ["exp_method", "Et dignissimos aut illum rerum reiciendis aut."], ["date_start", Wed, 24 Aug 2016], ["date_end", Wed, 24 Aug 2016], ["status", "seeking approval"], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 18], ["proposal_id", 2], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 13], ["proposal_id", 2], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 2], ["user_id", 5], ["body", "Qui provident rem molestias."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
@@ -5208,6 +5416,7 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Quo quia consectetur esse."], ["proposal_id", 3], ["user_id", 7], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
@@ -5284,11 +5493,98 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Id velit sunt."], ["proposal_id", 4], ["user_id", 19], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 2], ["user_id", 3], ["body", "Occaecati quam iure tempora."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 2], ["user_id", 10], ["body", "Et libero laudantium veniam sed odit."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 2], ["user_id", 8], ["body", "Quaerat est et voluptatem nisi."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 2], ["user_id", 13], ["body", "Sit modi."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 10], ["proposal_id", 2], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "exp_method", "date_start", "date_end", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "The Other Side of Silence"], ["abstract", "Laudantium laborum quo corporis aliquam occaecati eos."], ["intro", "Natus veritatis pariatur facilis."], ["hypothesis", "Placeat sapiente soluta rerum voluptatem aperiam est."], ["exp_method", "Rerum et mollitia fugit omnis cumque."], ["date_start", Thu, 25 Aug 2016], ["date_end", Wed, 24 Aug 2016], ["status", "seeking approval"], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 18], ["proposal_id", 3], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 14], ["proposal_id", 3], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 3], ["user_id", 3], ["body", "Ipsa voluptas possimus."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 3], ["user_id", 1], ["body", "Dolorum voluptatem hic assumenda qui."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 3], ["user_id", 13], ["body", "Ut aspernatur molestiae totam nesciunt harum architecto."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 3], ["user_id", 10], ["body", "Sit non autem ipsam enim dolor qui."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 3], ["user_id", 3], ["body", "At nesciunt perferendis."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+<<<<<<< HEAD
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 9], ["proposal_id", 4], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
@@ -5312,12 +5608,38 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Perferendis neque est id est."], ["proposal_id", 5], ["user_id", 5], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 11], ["proposal_id", 3], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "exp_method", "date_start", "date_end", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Mr Standfast"], ["abstract", "Facere non illo quos alias aut et."], ["intro", "Ratione veniam et natus itaque harum molestiae."], ["hypothesis", "Enim delectus."], ["exp_method", "Eos voluptatem."], ["date_start", Thu, 25 Aug 2016], ["date_end", Thu, 25 Aug 2016], ["status", "seeking approval"], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 16], ["proposal_id", 4], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 14], ["proposal_id", 4], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 4], ["user_id", 19], ["body", "Voluptas fugit debitis."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "In autem ab."], ["proposal_id", 5], ["user_id", 13], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
@@ -5343,11 +5665,39 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Ipsa eaque."], ["proposal_id", 5], ["user_id", 2], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 4], ["user_id", 3], ["body", "Animi ut in voluptatem aliquam."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 4], ["user_id", 16], ["body", "Omnis dolorem maiores minus."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 4], ["user_id", 6], ["body", "Esse dolorem."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 4], ["user_id", 15], ["body", "Sed qui dicta distinctio."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+<<<<<<< HEAD
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 17], ["proposal_id", 5], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
@@ -5403,10 +5753,68 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Nulla rerum eaque odio."], ["proposal_id", 6], ["user_id", 19], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 4], ["proposal_id", 4], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "exp_method", "date_start", "date_end", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "That Hideous Strength"], ["abstract", "Ducimus consequatur optio quis aut aperiam consequatur quibusdam."], ["intro", "Eligendi aut nemo occaecati voluptates explicabo."], ["hypothesis", "Vitae ut culpa."], ["exp_method", "Quam in voluptatum."], ["date_start", Thu, 25 Aug 2016], ["date_end", Thu, 25 Aug 2016], ["status", "seeking approval"], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 13], ["proposal_id", 5], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 9], ["proposal_id", 5], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 5], ["user_id", 4], ["body", "Odit incidunt culpa ut adipisci."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 5], ["user_id", 7], ["body", "At nemo in quam error."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 5], ["user_id", 19], ["body", "Nam neque."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 5], ["user_id", 14], ["body", "Voluptas aut enim fugiat quia."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 5], ["user_id", 2], ["body", "Ex provident veritatis recusandae sed rerum delectus."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+<<<<<<< HEAD
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["proposal_id", 6], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
@@ -5421,6 +5829,22 @@ ORDER BY c.conname
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 1], ["proposal_id", 7], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
+=======
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 15], ["proposal_id", 5], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "exp_method", "date_start", "date_end", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "The Sun Also Rises"], ["abstract", "Maxime ut officia voluptate esse quisquam ea voluptatem."], ["intro", "Aut magni sit aut tempore itaque."], ["hypothesis", "Commodi doloremque atque."], ["exp_method", "Dolor corporis laboriosam."], ["date_start", Thu, 25 Aug 2016], ["date_end", Wed, 24 Aug 2016], ["status", "seeking approval"], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 19], ["proposal_id", 6], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 12], ["proposal_id", 6], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
@@ -5428,23 +5852,37 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Harum nihil expedita magnam et doloremque."], ["proposal_id", 7], ["user_id", 15], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 6], ["user_id", 7], ["body", "Delectus est."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Sint quos autem libero voluptas quo dignissimos."], ["proposal_id", 7], ["user_id", 10], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 6], ["user_id", 1], ["body", "Magni qui tenetur exercitationem voluptatem."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Est mollitia dolorem enim quia quasi est."], ["proposal_id", 7], ["user_id", 4], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 6], ["user_id", 11], ["body", "Eum et sit non rerum voluptas aut."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
@@ -5452,20 +5890,31 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Maiores qui quos."], ["proposal_id", 7], ["user_id", 1], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 6], ["user_id", 6], ["body", "Delectus vel cupiditate qui rerum adipisci quaerat."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Beatae nihil consequatur excepturi."], ["proposal_id", 7], ["user_id", 2], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 6], ["user_id", 4], ["body", "Optio consequatur."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+<<<<<<< HEAD
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 13], ["proposal_id", 7], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
@@ -5497,12 +5946,46 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Mollitia hic et quam incidunt autem."], ["proposal_id", 8], ["user_id", 17], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 2], ["proposal_id", 6], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "exp_method", "date_start", "date_end", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "The Moving Finger"], ["abstract", "Et provident et ea perspiciatis dolor cum."], ["intro", "Est et quam deserunt reiciendis rerum provident."], ["hypothesis", "Ut libero."], ["exp_method", "Doloribus cumque et et."], ["date_start", Wed, 24 Aug 2016], ["date_end", Wed, 24 Aug 2016], ["status", "seeking approval"], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 20], ["proposal_id", 7], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 3], ["proposal_id", 7], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 7], ["user_id", 20], ["body", "Corrupti quaerat neque cumque."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 7], ["user_id", 9], ["body", "Suscipit fugiat sint labore dolor eum et."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Consequatur aut consequuntur explicabo."], ["proposal_id", 8], ["user_id", 4], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
@@ -5513,18 +5996,36 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Eaque omnis et."], ["proposal_id", 8], ["user_id", 6], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 7], ["user_id", 13], ["body", "Libero repellat distinctio architecto."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 7], ["user_id", 11], ["body", "Modi inventore rerum."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Sint eos id cum."], ["proposal_id", 8], ["user_id", 1], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 7], ["user_id", 19], ["body", "Et tenetur sequi magnam quas."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+<<<<<<< HEAD
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 13], ["proposal_id", 8], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
@@ -5558,11 +6059,50 @@ ORDER BY c.conname
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+=======
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 13], ["proposal_id", 7], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "exp_method", "date_start", "date_end", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Fame Is the Spur"], ["abstract", "Temporibus cupiditate consequatur soluta a vel similique optio."], ["intro", "Minus dolores omnis qui debitis."], ["hypothesis", "Distinctio saepe dolor voluptatem rerum."], ["exp_method", "Totam quas."], ["date_start", Thu, 25 Aug 2016], ["date_end", Wed, 24 Aug 2016], ["status", "seeking approval"], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 4], ["proposal_id", 8], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 17], ["proposal_id", 8], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 8], ["user_id", 15], ["body", "Sed minima placeat ratione quod expedita eius."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 8], ["user_id", 3], ["body", "Quo incidunt."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Illo velit qui unde perspiciatis eius similique."], ["proposal_id", 9], ["user_id", 13], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 8], ["user_id", 20], ["body", "Doloribus et maxime qui."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
@@ -5570,20 +6110,30 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Et voluptas mollitia."], ["proposal_id", 9], ["user_id", 14], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 8], ["user_id", 3], ["body", "Et earum excepturi molestiae."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "proposal_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Impedit ex aut suscipit eaque explicabo."], ["proposal_id", 9], ["user_id", 6], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 8], ["user_id", 3], ["body", "Vel delectus vitae consequatur quia voluptatem."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+<<<<<<< HEAD
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 16], ["proposal_id", 9], ["created_at", 2016-08-25 23:13:26 UTC], ["updated_at", 2016-08-25 23:13:26 UTC]]
@@ -9028,6 +9578,46 @@ ORDER BY c.conname
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 1], ["proposal_id", 7], ["created_at", 2016-08-26 02:13:02 UTC], ["updated_at", 2016-08-26 02:13:02 UTC]]
+=======
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 7], ["proposal_id", 8], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "exp_method", "date_start", "date_end", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "The Way of All Flesh"], ["abstract", "Delectus accusamus dolores et dolorem."], ["intro", "Quia est qui sequi omnis."], ["hypothesis", "Similique ipsum totam cum assumenda."], ["exp_method", "Praesentium sapiente repellendus."], ["date_start", Wed, 24 Aug 2016], ["date_end", Wed, 24 Aug 2016], ["status", "seeking approval"], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 19], ["proposal_id", 9], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 8], ["proposal_id", 9], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 9], ["user_id", 19], ["body", "Id voluptates dolor quia odio dicta sed."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 9], ["user_id", 20], ["body", "Aperiam optio et vero itaque."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 9], ["user_id", 11], ["body", "Praesentium consectetur et."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
@@ -9035,6 +9625,7 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 7], ["user_id", 9], ["body", "Quis corrupti."], ["created_at", 2016-08-26 02:13:02 UTC], ["updated_at", 2016-08-26 02:13:02 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
@@ -9179,18 +9770,27 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 9], ["user_id", 4], ["body", "Deleniti alias reiciendis."], ["created_at", 2016-08-26 02:13:03 UTC], ["updated_at", 2016-08-26 02:13:03 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 9], ["user_id", 18], ["body", "Inventore optio et odio."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 9], ["user_id", 11], ["body", "Necessitatibus dolor sed harum nesciunt cupiditate."], ["created_at", 2016-08-26 02:13:03 UTC], ["updated_at", 2016-08-26 02:13:03 UTC]]
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 9], ["user_id", 1], ["body", "Facere quia fuga expedita accusamus."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+<<<<<<< HEAD
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 4], ["proposal_id", 9], ["created_at", 2016-08-26 02:13:03 UTC], ["updated_at", 2016-08-26 02:13:03 UTC]]
@@ -9205,6 +9805,22 @@ ORDER BY c.conname
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 20], ["proposal_id", 10], ["created_at", 2016-08-26 02:13:03 UTC], ["updated_at", 2016-08-26 02:13:03 UTC]]
+=======
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 6], ["proposal_id", 9], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "proposals" ("title", "abstract", "intro", "hypothesis", "exp_method", "date_start", "date_end", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["title", "Ego Dominus Tuus"], ["abstract", "Enim soluta rerum necessitatibus et expedita reprehenderit quam."], ["intro", "Magni amet."], ["hypothesis", "Occaecati aut harum qui aliquam."], ["exp_method", "Sit facere maiores sed facilis ad."], ["date_start", Wed, 24 Aug 2016], ["date_end", Wed, 24 Aug 2016], ["status", "seeking approval"], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 6], ["proposal_id", 10], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "user_proposals" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4)[0m  [["user_id", 11], ["proposal_id", 10], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
@@ -9212,6 +9828,7 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+<<<<<<< HEAD
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 10], ["user_id", 7], ["body", "Cum quos aut."], ["created_at", 2016-08-26 02:13:03 UTC], ["updated_at", 2016-08-26 02:13:03 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
@@ -9246,10 +9863,47 @@ ORDER BY c.conname
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 10], ["user_id", 14], ["body", "Sint unde cupiditate."], ["created_at", 2016-08-26 02:13:03 UTC], ["updated_at", 2016-08-26 02:13:03 UTC]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+=======
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 10], ["user_id", 5], ["body", "Voluptate iure ex repellendus ut alias."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 10], ["user_id", 11], ["body", "Autem adipisci deleniti suscipit."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 10], ["user_id", 14], ["body", "Saepe corrupti cupiditate vero eum placeat ducimus."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 10], ["user_id", 12], ["body", "Repellat quod blanditiis architecto."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("proposal_id", "user_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["proposal_id", 10], ["user_id", 7], ["body", "Dolore sint."], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+<<<<<<< HEAD
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 8], ["proposal_id", 10], ["created_at", 2016-08-26 02:13:03 UTC], ["updated_at", 2016-08-26 02:13:03 UTC]]
@@ -9412,3 +10066,9 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 32ms (Views: 29.9ms | ActiveRecord: 0.0ms)
 
 
+=======
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "proposal_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 16], ["proposal_id", 10], ["created_at", 2016-08-26 00:28:48 UTC], ["updated_at", 2016-08-26 00:28:48 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+>>>>>>> e74f58e3b8f7949db246941aab23276b24382c80

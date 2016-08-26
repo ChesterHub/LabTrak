@@ -35,5 +35,4 @@ private
   def proposal_params
     params.require(:proposal).permit(:title, :abstract, :intro, :hypothesis, :method, :date_start, :date_end)
   end
-
 end

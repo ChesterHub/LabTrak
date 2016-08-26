@@ -5,7 +5,7 @@ class CreateProposals < ActiveRecord::Migration[5.0]
       t.text :abstract
       t.text :intro
       t.text :hypothesis
-      t.text :method
+      t.text :exp_method
       t.date :date_start
       t.date :date_end
       t.string :status
