@@ -1,3 +1,45 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/***********************************************/
+/************* Set page defaults ***************/
+/***********************************************/
+html, body, div, span, label,
+h1, h2, h3, h4, h5, h6, p, ol, ul, li,
+fieldset, form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+h1, h2 {
+  font-weight: bold;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-row {
+  display: block;
+  margin-bottom: 1vh;
+}
+
+.form-row label {
+  display: inline-block;
+  width: 25vw;
+}
+
+.text-field {
+  display: inline-block;
+  width: 15vw;
+}
