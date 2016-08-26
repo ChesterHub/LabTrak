@@ -1,4 +1,7 @@
 class ProposalsController < ApplicationController
+  def index
+    @proposals = Proposal.all
+  end
   def show
     @proposal = Proposal.find(params[:id])
   end
@@ -44,6 +47,6 @@ class ProposalsController < ApplicationController
 
 private
   def proposal_params
-    params.require(:proposal).permit(:title, :abstract, :intro, :hypothesis, :method, :date_start, :date_end)
+    params.require(:proposal).permit(:title, :abstract, :intro, :hypothesis, :exp_method, :date_start, :date_end, :status)
   end
 end
