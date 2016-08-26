@@ -46,7 +46,9 @@
     <br>
 
 		<% @proposal.comments.each do |comment| %>
-		  <%= comment.body %>
+		  <div class=commment>
+        <%= comment.body %>
+      </div>
 		<% end %>
 
 		<%= button_to 'Vote', upvote_proposal_path(@proposal), method: :post %>
