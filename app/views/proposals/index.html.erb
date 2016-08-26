@@ -2,23 +2,25 @@
 	<div class="form-container">
 		<h2>Proposals</h2>
 		<% @proposals.each do |proposal| %>
-		<div class="form-row">
-			Title
-		</div>
-		<label for="title" id="title"><a href="/proposals/<%= proposal.id %>"><%= proposal.title %></a></label>
-		<div class="form-row">
-			Abstract
-		</div>
-		<label for="abstract"><%= proposal.abstract %></label>
-		<div class="form-row">
-			Intro
-		</div>
-		<label for="intro"><%= proposal.intro %></label>
-		<div class="form-row">
-			Status
-		</div>
-		<label for="intro" id="intro"><%= proposal.status %></label>
+			<div class="form-row">
+				Title
+			</div>
+			<label for="title" id="title"><a href="/proposals/<%= proposal.id %>"><%= proposal.title %></a></label>
+			<div class=vote-count>
+			 <p>Vote Count: <%= proposal.votes.count %></p>
+			</div>
+			<div class="form-row">
+				Abstract
+			</div>
+			<label for="abstract"><%= proposal.abstract %></label>
+			<div class="form-row">
+				Intro
+			</div>
+			<label for="intro"><%= proposal.intro %></label>
+			<div class="form-row">
+				Status
+			</div>
+			<label for="intro" id="intro"><%= proposal.status %></label>
 		<% end %>
 	</div>
-
 </div>
