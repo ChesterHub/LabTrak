@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>LabTrack</title>
+	<title>LabTrakk</title>
 	<%= csrf_meta_tags %>
 
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,7 +10,7 @@
 
 <body>
 	<div class="header">
-		<%= link_to "LabTrak", '/proposals' %> |
+		<%= link_to "LabTrakk", '/proposals' %> |
 		<% if current_user %>
 		Signed in as <a href="/users/<%=current_user.id %>"><%= current_user.name.capitalize %></a> | <%= link_to "Logout", '/logout' %> | <%= link_to "Create New Proposal", new_proposal_path %>
 		<% else %>
